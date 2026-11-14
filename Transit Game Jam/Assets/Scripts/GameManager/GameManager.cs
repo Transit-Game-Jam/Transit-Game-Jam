@@ -1,9 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     static public GameManager Instance { get; private set; }
-
 
     private void Awake()
     {
@@ -21,5 +21,7 @@ public class GameManager : MonoBehaviour
         // Hide cursor when locking
         Cursor.visible = true;
     }
+    
+    
 
 }
