@@ -3,16 +3,22 @@ using System.Collections;
 using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Train : MonoBehaviour
 {
     [Header("Movement")]
     public float trainSpeed = 5f;
 
+    /*[Header("AI")]
+    public NavMeshAgent agent;*/
+
     [Header("Travel Destination")]
     public Transform destination1;
     public Transform destination2;
-    public Transform currentDestination;
+
+    public Transform cacheStartPosition;
+    public Vector2 currentDestination;
 
     [Header("States")]
     public TrainStates currentState;
@@ -24,56 +30,34 @@ public class Train : MonoBehaviour
         Moving
     }
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        currentDestination = destination1;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        HandleDestination();
-        HandleStateTransitions();
+        //HandleStateTransitions();
         HandleStateBehavior();
-
     }
-
-    #region Destination Behaviour
-
-    void HandleDestination()
-    {
-        if (transform.position == destination1.position)
-        {
-            currentDestination.position = destination2.position;
-        }
-
-        if (transform.position == destination2.position)
-        {
-            currentDestination.position = destination1.position;
-        }
-    }
-    
-    #endregion
 
     #region Transition Behaviour
 
     void HandleStateTransitions()
     {
-        float transitionTimer = 0f;
-
-        if (transform.position == currentDestination.position)
+        if (this.transform.position == destination1.position)
         {
-            transitionTimer = 0f;
-            currentState = TrainStates.Stopped;
-            transitionTimer += Time.deltaTime;
-        }
-
-        if (transitionTimer > 5f)
-        {
+            currentDestination = destination2.position;
             currentState = TrainStates.Moving;
         }
+
+        /*if (this.transform.position == destination2.position)
+        {
+            currentDestination = destination1.position;
+            currentState = TrainStates.Moving;
+        }*/
     }
 
     #endregion
@@ -84,26 +68,28 @@ public class Train : MonoBehaviour
     {
         switch (currentState)
         {
-            case TrainStates.Stopped:
+            /*case TrainStates.Stopped:
                 HandleStoppedBehaviour();
-                break;
+                break;*/
 
-            case TrainStates.Moving:
+            default:
                 HandleMovingBehaviour();
                 break;
         }
     }
 
-    void HandleStoppedBehaviour()
+    /*void HandleStoppedBehaviour()
     {
-        trainSpeed = 0f;
-        transform.position = Vector2.Lerp(transform.position, transform.position, Time.deltaTime);
-    }
+        agent.speed = 0f;
+        agent.destination = this.transform.position;
+    }*/
 
     void HandleMovingBehaviour()
     {
-        trainSpeed = 2f;
-        transform.position = Vector2.Lerp(transform.position, currentDestination.position, Time.deltaTime);
+        /*agent.speed = 5f;
+        agent.destination = currentDestination;*/
+
+        this.transform.position = new Vector2(Mathf.PingPong(destination1.position.x, destination2.position.x) * Time.deltaTime, 0);
     }
     #endregion
 }
