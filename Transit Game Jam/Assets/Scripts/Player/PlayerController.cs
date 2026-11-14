@@ -4,7 +4,8 @@ using UnityEngine.InputSystem.iOS;
 public class PlayerController : MonoBehaviour
 {
     [Header("Walk")]
-    [SerializeField] private float WalkSpeed = 3f;
+    [SerializeField] private float WalkSpeed = 8f;
+    [SerializeField] private float SwimSpeed = 1f;
 
     [Header("Input")]
     public InputActions inputActions;
@@ -18,7 +19,8 @@ public class PlayerController : MonoBehaviour
     {
         Idle,
         Walk,
-        Swim
+        Swim,
+        PassedOut,
     }
 
     private void Awake()
@@ -38,10 +40,16 @@ public class PlayerController : MonoBehaviour
         switch (currentState)
         {
             case State.Walk:
-                Debug.Log("Entered Walk State");
+                Debug.Log("You are walking");
                 break;
             case State.Idle:
-                Debug.Log("Entered Idle State");
+                Debug.Log("Bro is AFK");
+                break;
+            case State.Swim:
+                Debug.Log("You are swimming");
+                break;
+            case State.PassedOut:
+                Debug.Log("You passed out...");
                 break;
         }
     }
