@@ -34,6 +34,11 @@ public class PlayerController : MonoBehaviour
         inputActions.Enable();
     }
 
+    private void OnDisable()
+    {
+        inputActions.Disable();
+    }
+
 
     private void OnStateEnter()
     {
