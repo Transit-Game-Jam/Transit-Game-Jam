@@ -10,9 +10,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timerTxt;
     public TextMeshProUGUI cheddahTxt;
 
-    [SerializeField] private float timer = 600f;
+    [SerializeField] private float timer = 180f;
 
-    private int cheddahAmt;
+    public float cheddahAmt;
 
     private void Awake()
     {
@@ -38,8 +38,7 @@ public class GameManager : MonoBehaviour
         int secs = Mathf.FloorToInt(timer % 60);
         int milliseconds = Mathf.FloorToInt((timer % 1f) * 100f);
         timerTxt.text = string.Format("{0:00} : {1:00} : {2:00}", mins, secs, milliseconds);
-        //timerTxt.text = "Timer: " + Mathf.Floor(timer*10) / 10;
-        cheddahTxt.text = "Cheddah: " + cheddahAmt;
+        cheddahTxt.text = "Cheddah: $" + cheddahAmt;
 
         timer -= Time.deltaTime;
 
