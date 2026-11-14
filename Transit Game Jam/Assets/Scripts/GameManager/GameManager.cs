@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    CursorLockMode wantedMode;
+    static public GameManager Instance { get; private set; }
 
-    void Start()
+
+    private void Awake()
     {
+        Instance = this;
         // Set wanted mode to whatever is set in the inspector
         SetCursorState();
         Cursor.visible = false;
@@ -15,9 +17,9 @@ public class GameManager : MonoBehaviour
     // Apply requested cursor state
     void SetCursorState()
     {
-        Cursor.lockState = wantedMode;
+        Cursor.lockState = CursorLockMode.Locked;
         // Hide cursor when locking
-        Cursor.visible = (CursorLockMode.Locked != wantedMode);
+        Cursor.visible = true;
     }
 
 }
