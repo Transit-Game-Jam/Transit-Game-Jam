@@ -6,8 +6,10 @@ public class PlayerController : MonoBehaviour
     [Header("Walk")]
     [SerializeField] private float WalkSpeed = 3f;
 
+    [Header("Input")]
+    public InputActions inputActions;
+
     private Rigidbody2D playerRB;
-    private PlayerInput playerInput;
 
     private Vector2 MoveInput;
     private State currentState;
@@ -15,13 +17,19 @@ public class PlayerController : MonoBehaviour
     public enum State
     {
         Idle,
-        Walk
+        Walk,
+        Swim
     }
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        playerInput = GetComponent<PlayerInput>();
+        inputActions = new InputActions();
+    }
+
+    private void OnEnable()
+    {
+        inputActions.Enable();
     }
 
 
@@ -41,7 +49,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         UpdateState();
-        MoveInput = playerInput.inputActions.Player.Move.ReadValue<Vector2>();
+        MoveInput = inputActions.Player.Move.ReadValue<Vector2>();
         playerRB.linearVelocity = MoveInput * WalkSpeed;
     }
 
@@ -50,14 +58,15 @@ public class PlayerController : MonoBehaviour
         switch(currentState)
         {
             case State.Walk:
-                if (playerInput.inputActions.Player.Move.ReadValue<Vector2>() == Vector2.zero)
+                if (MoveInput == Vector2.zero)
                 {
                     currentState = State.Idle;
                     OnStateEnter();
                 }
                 break;
+
             case State.Idle:
-                if (playerInput.inputActions.Player.Move.ReadValue<Vector2>() != Vector2.zero)
+                if (MoveInput != Vector2.zero)
                 {
                     currentState = State.Walk;
                     OnStateEnter();
