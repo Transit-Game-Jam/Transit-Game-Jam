@@ -11,8 +11,8 @@ public class Interactables : MonoBehaviour
     public TextMeshProUGUI taxi;
     public TextMeshProUGUI bike;
 
-    private TextMeshProUGUI[] interactableTexts;
-    private TextMeshProUGUI[] allText;
+    public TextMeshProUGUI[] interactableTexts;
+    public TextMeshProUGUI[] allText;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +24,7 @@ public class Interactables : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        CacheText();
     }
 
     void CacheText()
@@ -33,7 +33,10 @@ public class Interactables : MonoBehaviour
         {
             for (int a = 0; i < allText.Length; i++)
             {
-                if (interactableTexts[i].name ==)
+                if (interactableTexts[i].name == allText[a].name)
+                {
+                    interactableTexts[i] = allText[a];
+                }
             }
         }
     }
