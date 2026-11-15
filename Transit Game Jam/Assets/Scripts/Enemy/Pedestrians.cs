@@ -5,24 +5,28 @@ public class Pedestrians : MonoBehaviour
 {
 
     [SerializeField] private float pedSpeed = 2f;
-    [SerializeField] private float pedestrianDistance = 2f;
+    //[SerializeField] private float pedestrianDistance = 2f;
 
     [Header("Travel Destination")]
     public Transform waypoint1;
-    /// <summary>
-    /// The second waypoint for the pedestrian to travel to.
-    /// </summary>
-   // public Transform waypoint2;
+    //public Transform waypoint2;
 
     private void Start()
     {
-        PedestrianMovement();
+        PedestrianWaypoint();
+        //PedestrianMovement();
+    }
+
+    void PedestrianWaypoint()
+    {
+        Transform target = waypoint1;
+        transform.position = Vector2.MoveTowards(transform.position, target.position, pedSpeed * Time.deltaTime);
     }
 
 
     void PedestrianMovement()
     {
-        this.transform.position = new Vector2(Mathf.PingPong(Time.time * pedSpeed, waypoint1.position.x * pedestrianDistance), 0);
+        //this.transform.position = new Vector2(Mathf.PingPong(Time.time * pedSpeed, waypoint1.position.x * pedestrianDistance), 0);
     }
 
 }
