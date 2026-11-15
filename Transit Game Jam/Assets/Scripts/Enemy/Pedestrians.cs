@@ -9,17 +9,33 @@ public class Pedestrians : MonoBehaviour
 
     [Header("Travel Destination")]
     public Transform waypoint1;
-    //public Transform waypoint2;
+    public Transform waypoint2;
+
+
+    private Transform currentTarget;
+
 
     private void Start()
     {
+
+        currentTarget = waypoint1;
         PedestrianWaypoint();
         //PedestrianMovement();
     }
 
+    private void Update()
+    {
+        PedestrianWaypoint();
+        if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
+        {
+            currentTarget = currentTarget == waypoint1 ? waypoint2 : waypoint1;
+        }
+
+    }
+
     void PedestrianWaypoint()
     {
-        Transform target = waypoint1;
+        Transform target = currentTarget;
         transform.position = Vector2.MoveTowards(transform.position, target.position, pedSpeed * Time.deltaTime);
     }
 

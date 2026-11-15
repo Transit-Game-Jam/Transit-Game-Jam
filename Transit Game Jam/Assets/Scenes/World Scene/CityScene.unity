@@ -430,6 +430,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81c466753338d2949a571c6958f696c3, type: 3}
+--- !u!1 &83981791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 83981792}
+  m_Layer: 0
+  m_Name: Waypoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &83981792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83981791}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 25.254868, y: 3.8152363, z: -0.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1746556903}
+  - {fileID: 1025387650}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &94939187
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +959,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 14.04
+  field of view: 22.2
   orthographic: 0
   orthographic size: 7.674518
   m_Depth: -1
@@ -1575,7 +1608,7 @@ GameObject:
   - component: {fileID: 682773917}
   - component: {fileID: 682773916}
   m_Layer: 0
-  m_Name: Street Level (No Phone)_0
+  m_Name: Street Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2196,12 +2229,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025387649}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: -9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -17.89, z: 0}
+  m_LocalScale: {x: 0.30608487, y: 0.30608487, z: 0.30608487}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1522083458}
+  m_Father: {fileID: 83981792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048068090
 GameObject:
@@ -2371,7 +2404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineFollow
   TrackerSettings:
-    BindingMode: 3
+    BindingMode: 4
     PositionDamping: {x: 1, y: 1, z: 1}
     AngularDampingMode: 0
     RotationDamping: {x: 1, y: 1, z: 1}
@@ -2710,12 +2743,10 @@ Transform:
   m_GameObject: {fileID: 1522083456}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.89, y: 6.61, z: -0.17}
+  m_LocalPosition: {x: 25.01, y: 6.57, z: -0.17}
   m_LocalScale: {x: 0.30608487, y: 0.30608487, z: 0.30608487}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1746556903}
-  - {fileID: 1025387650}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1522083459
@@ -2730,8 +2761,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb6f38b8e1ab920468b575f40dbd77b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pedestrians
-  pedSpeed: 2
+  pedSpeed: 4.35
   waypoint1: {fileID: 1746556903}
+  waypoint2: {fileID: 1025387650}
 --- !u!1001 &1557435579
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3211,12 +3243,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1746556902}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8, y: 20, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 16.2, z: 0}
+  m_LocalScale: {x: 0.30608487, y: 0.30608487, z: 0.30608487}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1522083458}
+  m_Father: {fileID: 83981792}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828087378
 GameObject:
@@ -3988,7 +4020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8626301487730648987, guid: f338e26e0b1cef943bf2e20dc8e5ba6d, type: 3}
       propertyPath: Lens.FieldOfView
-      value: 14.04
+      value: 22.2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4815466794714236695, guid: f338e26e0b1cef943bf2e20dc8e5ba6d, type: 3}
@@ -4069,10 +4101,11 @@ SceneRoots:
   - {fileID: 1104362990912669546}
   - {fileID: 1048068092}
   - {fileID: 1152543606}
+  - {fileID: 682773917}
   - {fileID: 1884542690}
-  - {fileID: 37339578}
   - {fileID: 1111611218208531914}
   - {fileID: 1522083458}
+  - {fileID: 83981792}
   - {fileID: 567676489}
   - {fileID: 1557435579}
   - {fileID: 911913364}
@@ -4082,4 +4115,4 @@ SceneRoots:
   - {fileID: 860187696}
   - {fileID: 43118133}
   - {fileID: 879317673}
-  - {fileID: 682773917}
+  - {fileID: 37339578}
