@@ -20,10 +20,12 @@ public class Train : MonoBehaviour
     public PlayerController player;
     public GameObject door;
     public float interactDistance = 5f;
+    public Interactables interact;
 
     void Awake()
     {
         player = FindAnyObjectByType<PlayerController>();
+        interact = FindAnyObjectByType<Interactables>();
     }
 
     void Update()
@@ -44,7 +46,11 @@ public class Train : MonoBehaviour
 
         if (distance < interactDistance)
         {
-            
+            interact.HandleTrainText();
+        }
+        else
+        {
+            interact.DisableText();
         }
     }
 

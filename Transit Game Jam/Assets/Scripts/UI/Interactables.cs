@@ -5,39 +5,54 @@ using NUnit.Framework;
 
 public class Interactables : MonoBehaviour
 {
-    public TextMeshProUGUI bus;
-    public TextMeshProUGUI train;
-    public TextMeshProUGUI ferry;
-    public TextMeshProUGUI taxi;
-    public TextMeshProUGUI bike;
 
-    public TextMeshProUGUI[] interactableTexts;
-    public TextMeshProUGUI[] allText;
+    [Header("Master Interactable Text")]
+    public TextMeshProUGUI interactText;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [Header("Interact Text")]
+    public string Bus = new string("Press [SPACE] to enter the Bus");
+    public string Train = new string("Press [SPACE] to enter the Train");
+    public string Bike = new string("Press [SPACE] to ride the Bike");
+    public string Taxi = new string("Press [SPACE] to enter the Taxi");
+    public string Ferry = new string("Press [SPACE] to enter the Ferry");
+
+    public void HandleBusText()
     {
-        interactableTexts = new TextMeshProUGUI[] { bus, train, ferry, taxi, bike };
-        allText = FindObjectsByType<TextMeshProUGUI>(FindObjectsSortMode.InstanceID);
+        interactText.enabled = true;
+        interactText.color = Color.black;
+        interactText.text = Bus;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HandleBikeText()
     {
-        CacheText();
+        interactText.enabled = true;
+        interactText.color = Color.black;
+        interactText.text = Bike;
     }
 
-    void CacheText()
+    public void HandleTrainText()
     {
-        for (int i = 0; i < interactableTexts.Length; i++)
-        {
-            for (int a = 0; i < allText.Length; i++)
-            {
-                if (interactableTexts[i].name == allText[a].name)
-                {
-                    interactableTexts[i] = allText[a];
-                }
-            }
-        }
+        interactText.enabled = true;
+        interactText.color = Color.black;
+        interactText.text = Train;
+    }
+
+    public void HandleTaxiText()
+    {
+        interactText.enabled = true;
+        interactText.color = Color.black;
+        interactText.text = Taxi;
+    }
+
+    public void HandleFerryText()
+    {
+        interactText.enabled = true;
+        interactText.color = Color.black;
+        interactText.text = Ferry;
+    }
+
+    public void DisableText()
+    {
+        interactText.enabled = false;
     }
 }
