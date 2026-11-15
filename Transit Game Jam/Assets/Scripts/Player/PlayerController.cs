@@ -96,6 +96,11 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(PlayerSlowed());
         }
+
+        if(collision.gameObject.CompareTag("Fat Rat"))
+        {
+            StartCoroutine(PlayerSlowed());
+        }
     }
 
 
