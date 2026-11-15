@@ -40,9 +40,13 @@ public class Pedestrians : MonoBehaviour
     }
 
 
-    void PedestrianMovement()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        //this.transform.position = new Vector2(Mathf.PingPong(Time.time * pedSpeed, waypoint1.position.x * pedestrianDistance), 0);
+        if (collision.CompareTag("Player"))
+        {
+            // Handle collision with the player
+            Debug.Log("Pedestrian collided with the player!");
+        }
     }
 
 }
