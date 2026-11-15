@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.iOS;
 
@@ -45,16 +46,16 @@ public class PlayerController : MonoBehaviour
         switch (currentState)
         {
             case State.Walk:
-                Debug.Log("You are walking");
+                //Debug.Log("You are walking");
                 break;
             case State.Idle:
-                Debug.Log("Bro is AFK");
+                //Debug.Log("Bro is AFK");
                 break;
             case State.Swim:
-                Debug.Log("You are swimming");
+                //Debug.Log("You are swimming");
                 break;
             case State.PassedOut:
-                Debug.Log("You passed out...");
+                //Debug.Log("You passed out...");
                 break;
         }
     }
@@ -86,5 +87,22 @@ public class PlayerController : MonoBehaviour
                 }
                 break;
         }
+    }
+
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Pedestrian"))
+        {
+            StartCoroutine(PlayerSlowed());
+        }
+    }
+
+
+    IEnumerator PlayerSlowed()
+    {
+        WalkSpeed /= 8f; // Halve the speed
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        WalkSpeed *= 8f; // Reset the speed back to normal
     }
 }

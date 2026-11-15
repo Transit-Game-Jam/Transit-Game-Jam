@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -40,13 +42,21 @@ public class Pedestrians : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             // Handle collision with the player
+            StartCoroutine(PedestrianSpeedUp());
             Debug.Log("Pedestrian collided with the player!");
         }
+    }
+
+    private IEnumerator PedestrianSpeedUp()
+    {
+        pedSpeed *= 2f; // Double the speed
+        yield return new WaitForSeconds(2f); // Wait for 2 seconds
+        pedSpeed /= 2f; // Reset the speed back to normal
     }
 
 }

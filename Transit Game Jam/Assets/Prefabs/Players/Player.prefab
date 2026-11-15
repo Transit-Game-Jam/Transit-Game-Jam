@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5010050212907477196}
   - component: {fileID: 8626301487730648987}
-  - component: {fileID: 4815466794714236695}
+  - component: {fileID: 3998913583610133689}
   m_Layer: 0
   m_Name: PlayerCam
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2140512006123094347}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -36.325172}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -57,7 +57,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 34
+    FieldOfView: 22.2
     OrthographicSize: 7.674518
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -76,7 +76,7 @@ MonoBehaviour:
       BarrelClipping: 0.25
       Anamorphism: 0
   BlendHint: 0
---- !u!114 &4815466794714236695
+--- !u!114 &3998913583610133689
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,7 +125,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.30588, y: -0.07407, z: -1}
-  m_LocalScale: {x: 0.2752912, y: 0.2752912, z: 0.2752912}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5010050212907477196}
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c5fc1e8833dd61418902d7aa68c0081, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  WalkSpeed: 8
+  WalkSpeed: 8.02
   SwimSpeed: 1
 --- !u!70 &5292105133805878397
 CapsuleCollider2D:
@@ -267,4 +267,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
