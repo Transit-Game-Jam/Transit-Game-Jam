@@ -4,11 +4,13 @@ public class Cars : MonoBehaviour
 {
 
     [SerializeField] private float CarSpeed = 3f;
-    [SerializeField] private Transform WaypointParent;
+    public Transform WaypointParent;
 
     private Transform[] waypoints;
 
-    private int currentWaypointIndex = 0;
+    private int currentWaypointIndex;
+
+    public bool loopWaypoints = true; // Set to true if you want the car to loop through waypoints
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +26,7 @@ public class Cars : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //MoveTowardsWaypoint();
+        MoveTowardsWaypoint();
     }
 
     void MoveTowardsWaypoint()

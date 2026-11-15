@@ -101,6 +101,11 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(PlayerSlowed());
         }
+
+        if (collision.gameObject.CompareTag("Cars"))
+        {
+            StartCoroutine(PlayerHitByCar());
+        }
     }
 
 
@@ -109,5 +114,12 @@ public class PlayerController : MonoBehaviour
         WalkSpeed /= 8f; // Halve the speed
         yield return new WaitForSeconds(1f); // Wait for 1 second
         WalkSpeed *= 8f; // Reset the speed back to normal
+    }
+
+    IEnumerator PlayerHitByCar()
+    {
+        WalkSpeed /= 4f; // Halve the speed
+        yield return new WaitForSeconds(1f); // Wait for 1 second
+        WalkSpeed = 8f; // Reset the speed back to normal
     }
 }
