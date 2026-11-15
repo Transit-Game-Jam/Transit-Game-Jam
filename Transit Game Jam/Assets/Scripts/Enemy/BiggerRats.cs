@@ -4,7 +4,7 @@ using UnityEngine;
 public class BiggerRats : MonoBehaviour
 {
 
-    [SerializeField] private float fatRatSpeed = 5f;
+    [SerializeField] private float fatRatSpeed = 3f;
 
 
     [Header("Travel Destination")]
@@ -50,8 +50,8 @@ public class BiggerRats : MonoBehaviour
 
     private IEnumerator FatRatSpeedUp()
     {
-        fatRatSpeed *= 5f; // Double the speed
+        fatRatSpeed *= 3f; // Double the speed
         yield return new WaitForSeconds(2f); // Wait for 2 seconds
-        fatRatSpeed /= 5f; // Reset the speed back to normal
+        fatRatSpeed /= 3f; // Reset the speed back to normal
     }
 }
