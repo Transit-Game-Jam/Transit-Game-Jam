@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World Scene/TrainStationScene.unity
     guid: 2c75b9f82d4d9784787d08f5c123f91d
+  - enabled: 1
+    path: Assets/Scenes/World Scene/Train.unity
+    guid: f0d4772dc61321f4a9b6de5f4d9e256b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

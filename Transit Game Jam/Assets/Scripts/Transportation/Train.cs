@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class Train : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class Train : MonoBehaviour
     public GameObject door;
     public float interactDistance = 5f;
     public Interactables interact;
+
+    private Keyboard keyboard = Keyboard.current;
 
     void Awake()
     {
@@ -47,6 +50,11 @@ public class Train : MonoBehaviour
         if (distance < interactDistance)
         {
             interact.HandleTrainText();
+
+            if (keyboard.spaceKey.wasPressedThisFrame)
+            {
+                SceneManager.LoadScene("Train");
+            }
         }
         else
         {

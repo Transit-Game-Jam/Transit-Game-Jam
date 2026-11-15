@@ -5,7 +5,6 @@ using NUnit.Framework;
 
 public class Interactables : MonoBehaviour
 {
-
     [Header("Master Interactable Text")]
     public TextMeshProUGUI interactText;
 
@@ -15,6 +14,11 @@ public class Interactables : MonoBehaviour
     public string Bike = new string("Press [SPACE] to ride the Bike");
     public string Taxi = new string("Press [SPACE] to enter the Taxi");
     public string Ferry = new string("Press [SPACE] to enter the Ferry");
+
+    void Awake()
+    {
+        interactText.enabled = false;
+    }
 
     public void HandleBusText()
     {
