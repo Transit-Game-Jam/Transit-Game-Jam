@@ -6,6 +6,8 @@ public class Pedestrians : MonoBehaviour
 
     [SerializeField] private float pedSpeed = 2f;
 
-    [SerializeField] private Transform[] waypoints;
+    //[SerializeField] private Transform[] waypoints;
+
+    
     
 }
