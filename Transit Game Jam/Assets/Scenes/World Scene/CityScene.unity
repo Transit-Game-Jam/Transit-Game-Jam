@@ -1950,7 +1950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   timerTxt: {fileID: 2015390245}
   cheddahTxt: {fileID: 628588371}
-  timer: 600
+  timer: 180
   cheddahAmt: 0
 --- !u!4 &1048068092
 Transform:
