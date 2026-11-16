@@ -37,19 +37,15 @@ public class Cars : MonoBehaviour
 
         if (Vector2.Distance(transform.position, target.position) < 0.1f)
         {
-            currentWaypointIndex++;
+            int nextWaypointIndex;
 
-            if (currentWaypointIndex >= waypoints.Length)
+            do
             {
-                if (loopWaypoints)
-                {
-                    currentWaypointIndex = 0;
-                }
-                else
-                {
-                    currentWaypointIndex = waypoints.Length - 1;
-                }
+                nextWaypointIndex = Random.Range(0, waypoints.Length);
             }
+            while (nextWaypointIndex == currentWaypointIndex);
+
+            currentWaypointIndex = nextWaypointIndex;
         }
     }
 }
