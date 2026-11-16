@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.iOS;
 
 public class PlayerController : MonoBehaviour
@@ -7,6 +8,11 @@ public class PlayerController : MonoBehaviour
     [Header("Walk")]
     [SerializeField] private float WalkSpeed = 8f;
     [SerializeField] private float SwimSpeed = 1f;
+
+    private BikeRide currentBike;
+    private PlayerController playerMovement;
+
+    private bool isRiding = false;
 
     [Header("Input")]
     public InputActions inputActions;
@@ -17,6 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 MoveInput;
     private State currentState;
+    private Keyboard keyboard = Keyboard.current;
+
 
     public enum State
     {
@@ -67,6 +75,18 @@ public class PlayerController : MonoBehaviour
         UpdateState();
         MoveInput = inputActions.Player.Move.ReadValue<Vector2>();
         playerRB.linearVelocity = MoveInput * WalkSpeed;
+
+        if(isRiding && keyboard.spaceKey.wasPressedThisFrame)
+        {
+            isRiding = false;
+            // Detach player from bike
+            transform.SetParent(null);
+            // Enable walking controls
+            playerMovement.enabled = true;
+            // Disable bike controls
+            currentBike.enabled = false;
+            DismountBike();
+        }
     }
 
     private void UpdateState()
@@ -108,6 +128,40 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(PlayerHitByCar());
         }
+        if(collision.gameObject.CompareTag("Bike"))
+        {
+            transform.SetParent(collision.transform);
+            MountBike();
+        }
+    }
+
+    void MountBike()
+    {
+        isRiding = true;
+
+        // Attach player to bike
+        transform.SetParent(currentBike.transform);
+
+        // Position player on the bike
+        transform.localPosition = Vector2.zero;
+
+        // Disable walking controls
+        playerMovement.enabled = false;
+
+        // Enable bike controls
+        currentBike.enabled = true;
+    }
+
+
+    void DismountBike()
+    {
+        isRiding = false;
+        // Detach player from bike
+        transform.SetParent(null);
+        // Enable walking controls
+        playerMovement.enabled = true;
+        // Disable bike controls
+        currentBike.enabled = false;
     }
 
 

@@ -1,0 +1,47 @@
+{
+    "version": 1,
+    "name": "BikeInput",
+    "maps": [
+        {
+            "name": "Bike Ride",
+            "id": "7421eec3-2174-420b-b3e4-56c96a47ed8b",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Button",
+                    "id": "eb5c8431-7c88-45da-96ff-c7fd47618022",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false,
+                    "priority": 0
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f425b6e4-e39b-442f-96b2-da5aefe2675e",
+                    "path": "<Keyboard>/a",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1a75927-512a-48ac-bcf9-ab2a3a029035",
+                    "path": "<Keyboard>/d",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -3,7 +3,6 @@ using Random = UnityEngine.Random;
 
 public class MinigameEnemy : MonoBehaviour
 {
-    public PlayerController player;
     public float speed = 5f;
     private Vector2 direction;
     private Vector2[] startDirection = { Vector2.down, Vector2.left, Vector2.right, Vector2.up };
@@ -12,7 +11,6 @@ public class MinigameEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        player = FindFirstObjectByType<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
         int randomIndex = Random.Range(0, startDirection.Length);
         direction = startDirection[randomIndex];
@@ -36,8 +34,12 @@ public class MinigameEnemy : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
-            player.playerHealth -= 1f;
-            Debug.Log(player.playerHealth);
+            PlayerController hitPlayer = collision.transform.GetComponent<PlayerController>();
+            if (hitPlayer != null)
+            {
+                hitPlayer.playerHealth -= 1f;
+                Debug.Log(hitPlayer.playerHealth);
+            }
         }
         else if (collision.contactCount > 0)
         {
