@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI cheddahTxt;
 
     [SerializeField] private float elapsedtime = 0f;
-    [SerializeField] private string mainCitySceneName = "CityScene";
+    [SerializeField] private string mainCitySceneName = "City Scene";
     [SerializeField] private string playerTag = "Player";
 
     public float cheddahAmt;
@@ -21,11 +21,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance == null)
+        if (Instance != null && Instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
 
         cheddahAmt = 0;
         SetCursorState();
@@ -51,12 +54,16 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         UpdateUiTimerAndCheddah();
-        CheckAnyPlayerHealthAndReturn();
 
-        if (SceneManager.GetActiveScene().name == mainCitySceneName)
+        string activeSceneName = SceneManager.GetActiveScene().name;
+
+        if (activeSceneName == mainCitySceneName)
         {
             TrackMainCityPlayerPosition();
+            return;
         }
+
+        CheckActiveScenePlayerHealthAndReturn();
     }
 
     private void UpdateUiTimerAndCheddah()
@@ -78,24 +85,18 @@ public class GameManager : MonoBehaviour
         elapsedtime += Time.deltaTime;
     }
 
-    private void CheckAnyPlayerHealthAndReturn()
+    private void CheckActiveScenePlayerHealthAndReturn()
     {
         if (isChangingScene)
         {
             return;
         }
 
-        PlayerController[] players = GetAllPlayers();
+        PlayerController[] players = GetPlayersInActiveScene();
 
         for (int i = 0; i < players.Length; i++)
         {
-            PlayerController player = players[i];
-            if (player == null)
-            {
-                continue;
-            }
-
-            if (player.playerHealth <= 0f)
+            if (players[i] != null && players[i].playerHealth <= 0f)
             {
                 playerChange();
                 return;
@@ -112,9 +113,16 @@ public class GameManager : MonoBehaviour
 
         isChangingScene = true;
 
+        if (!Application.CanStreamedLevelBeLoaded(mainCitySceneName))
+        {
+            Debug.LogError("Scene not found in Build Settings: " + mainCitySceneName);
+            isChangingScene = false;
+            return;
+        }
+
         if (SceneManager.GetActiveScene().name != mainCitySceneName)
         {
-            SceneManager.LoadScene("CityScene");
+            SceneManager.LoadScene(mainCitySceneName);
             return;
         }
 
@@ -134,7 +142,7 @@ public class GameManager : MonoBehaviour
 
     private void TrackMainCityPlayerPosition()
     {
-        Transform playerTransform = FindAnyPlayerTransform();
+        Transform playerTransform = FindAnyPlayerTransformInActiveScene();
         if (playerTransform == null)
         {
             return;
@@ -151,7 +159,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        Transform playerTransform = FindAnyPlayerTransform();
+        Transform playerTransform = FindAnyPlayerTransformInActiveScene();
         if (playerTransform == null)
         {
             return;
@@ -160,15 +168,9 @@ public class GameManager : MonoBehaviour
         playerTransform.position = lastMainCityPlayerPosition;
     }
 
-    private Transform FindAnyPlayerTransform()
+    private Transform FindAnyPlayerTransformInActiveScene()
     {
-        GameObject taggedPlayer = GameObject.FindGameObjectWithTag(playerTag);
-        if (taggedPlayer != null)
-        {
-            return taggedPlayer.transform;
-        }
-
-        PlayerController[] players = GetAllPlayers();
+        PlayerController[] players = GetPlayersInActiveScene();
         for (int i = 0; i < players.Length; i++)
         {
             if (players[i] != null)
@@ -180,14 +182,22 @@ public class GameManager : MonoBehaviour
         return null;
     }
 
-    private PlayerController[] GetAllPlayers()
+    private PlayerController[] GetPlayersInActiveScene()
     {
-#if UNITY_2022_2_OR_NEWER
-        return FindObjectsByType<PlayerController>(FindObjectsInactive.Include, FindObjectsSortMode.None);
-#else
-#pragma warning disable CS0618
-        return FindObjectsOfType<PlayerController>(true);
-#pragma warning restore CS0618
-#endif
+        Scene activeScene = SceneManager.GetActiveScene();
+        GameObject[] roots = activeScene.GetRootGameObjects();
+
+        System.Collections.Generic.List<PlayerController> result = new System.Collections.Generic.List<PlayerController>();
+
+        for (int i = 0; i < roots.Length; i++)
+        {
+            PlayerController[] players = roots[i].GetComponentsInChildren<PlayerController>(true);
+            for (int j = 0; j < players.Length; j++)
+            {
+                result.Add(players[j]);
+            }
+        }
+
+        return result.ToArray();
     }
 }

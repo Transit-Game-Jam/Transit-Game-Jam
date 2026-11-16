@@ -3337,9 +3337,6 @@ MonoBehaviour:
   elapsedtime: 0
   mainCitySceneName: MainCity
   playerTag: Player
-  busInteriorSceneName: BusInterior
-  trainInteriorSceneName: TrainInterior
-  ferryInteriorSceneName: FerryInterior
   cheddahAmt: 0
 --- !u!4 &1048068092
 Transform:
@@ -5043,6 +5040,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bike
   Bikespeed: 15
+  bikeRB: {fileID: 0}
+  MoveInput: {x: 0, y: 0}
 --- !u!212 &1707555517
 SpriteRenderer:
   serializedVersion: 2
