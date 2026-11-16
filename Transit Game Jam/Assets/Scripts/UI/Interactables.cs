@@ -15,11 +15,6 @@ public class Interactables : MonoBehaviour
     public string Taxi = new string("Press [SPACE] to enter the Taxi");
     public string Ferry = new string("Press [SPACE] to enter the Ferry");
 
-    void Awake()
-    {
-        interactText.enabled = false;
-    }
-
     public void HandleBusText()
     {
         interactText.enabled = true;
