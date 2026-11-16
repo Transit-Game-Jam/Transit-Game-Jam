@@ -9,8 +9,12 @@ public class GameManager : MonoBehaviour
 
     public TextMeshProUGUI timerTxt;
     public TextMeshProUGUI cheddahTxt;
+    
+    private SceneManager sceneManager;
+    [SerializeField] private float elapsedtime = 0f;
 
-    [SerializeField] private float timer = 180f;
+    private int playerHealth = 3;
+
 
     public float cheddahAmt;
 
@@ -38,18 +42,22 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        int mins = Mathf.FloorToInt(timer / 60);
-        int secs = Mathf.FloorToInt(timer % 60);
-        int milliseconds = Mathf.FloorToInt((timer % 1f) * 100f);
+        int mins = Mathf.FloorToInt(elapsedtime / 60);
+        int secs = Mathf.FloorToInt(elapsedtime % 60);
+        int milliseconds = Mathf.FloorToInt((elapsedtime % 1f) * 100f);
         timerTxt.text = string.Format("{0:00} : {1:00} : {2:00}", mins, secs, milliseconds);
         cheddahTxt.text = "Cheddah: $" + cheddahAmt;
 
-        timer -= Time.deltaTime;
+        elapsedtime += Time.deltaTime;
 
-        if(timer <= 0)
+        /*if(elapsedtime <= 0)
+        {
+            SceneManager.LoadScene(2);
+        }*/
+
+        if(playerHealth <= 0)
         {
             SceneManager.LoadScene(2);
         }
     }
-
 }

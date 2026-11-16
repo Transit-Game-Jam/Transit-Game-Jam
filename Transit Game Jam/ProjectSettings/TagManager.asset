@@ -8,6 +8,7 @@ TagManager:
   - Pedestrian
   - Fat Rat
   - Cars
+  - Taxi
   layers:
   - Default
   - TransparentFX

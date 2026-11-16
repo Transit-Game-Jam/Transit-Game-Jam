@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Taxi : MonoBehaviour
 {
@@ -6,6 +8,7 @@ public class Taxi : MonoBehaviour
     public Transform TaxiWaypointParent;
     public float interactDistance = 5f;
 
+    [Header("Distance Check Variables")]
     private Transform[] waypoints;
 
     private int currentWaypointIndex;
@@ -14,6 +17,7 @@ public class Taxi : MonoBehaviour
 
     public PlayerController player;
 
+    private Keyboard keyboard = Keyboard.current;
     public bool loopWaypoints = true; // Set to true if you want the car to loop through waypoints
 
     private void Awake()
@@ -81,6 +85,10 @@ public class Taxi : MonoBehaviour
         if (distance < interactDistance)
         {
             interact.HandleTaxiText();
+            if (keyboard.spaceKey.wasPressedThisFrame)
+            {
+                Debug.Log("You want to take the taxi?");
+            }
         }
         else
         {
