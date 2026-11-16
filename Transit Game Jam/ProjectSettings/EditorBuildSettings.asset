@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Test Scene/Test Train Scene.unity
     guid: 3bcd0a05b9e6ea74aaec1e6574dbb590
   - enabled: 1
-    path: Assets/Scenes/World Scene/BusScene.unity
+    path: Assets/Scenes/World Scene/BusInterior.unity
     guid: a61fde5ee5bbf0d47948d2382f0da1dc
   - enabled: 1
     path: Assets/Scenes/World Scene/FerryInterior.unity

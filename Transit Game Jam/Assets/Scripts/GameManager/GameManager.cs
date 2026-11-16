@@ -16,7 +16,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         cheddahAmt = 0;
         // Set wanted mode to whatever is set in the inspector
         SetCursorState();
