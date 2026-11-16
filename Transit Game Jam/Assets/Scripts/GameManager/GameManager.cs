@@ -47,4 +47,9 @@ public class GameManager : MonoBehaviour
 
         elapsedtime += Time.deltaTime;
     }
+
+    void playerChange()
+    {
+
+    }
 }

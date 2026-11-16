@@ -14,6 +14,7 @@ public class Interactables : MonoBehaviour
     public string Bike = new string("Press [SPACE] to ride the Bike");
     public string Taxi = new string("Press [SPACE] to enter the Taxi");
     public string Ferry = new string("Press [SPACE] to enter the Ferry");
+    public string TrainStation = new string("Press [SPACE] to enter the Train Station");
 
     public void HandleBusText()
     {
@@ -44,6 +45,12 @@ public class Interactables : MonoBehaviour
     }
 
     public void HandleFerryText()
+    {
+        interactText.enabled = true;
+        interactText.color = Color.black;
+        interactText.text = Ferry;
+    }
+    public void HandleTrainStationText()
     {
         interactText.enabled = true;
         interactText.color = Color.black;
