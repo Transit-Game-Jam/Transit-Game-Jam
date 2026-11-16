@@ -36,7 +36,8 @@ public class MinigameEnemy : MonoBehaviour
 
         if (collision.transform.CompareTag("Player"))
         {
-            Debug.Log("Colliding with player");
+            player.playerHealth -= 1f;
+            Debug.Log(player.playerHealth);
         }
         else if (collision.contactCount > 0)
         {
