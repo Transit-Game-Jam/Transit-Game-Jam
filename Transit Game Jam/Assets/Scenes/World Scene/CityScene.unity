@@ -3335,6 +3335,11 @@ MonoBehaviour:
   timerTxt: {fileID: 2015390245}
   cheddahTxt: {fileID: 628588371}
   elapsedtime: 0
+  mainCitySceneName: MainCity
+  playerTag: Player
+  busInteriorSceneName: BusInterior
+  trainInteriorSceneName: TrainInterior
+  ferryInteriorSceneName: FerryInterior
   cheddahAmt: 0
 --- !u!4 &1048068092
 Transform:
