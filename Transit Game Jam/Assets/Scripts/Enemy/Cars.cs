@@ -3,7 +3,7 @@ using UnityEngine;
 public class Cars : MonoBehaviour
 {
 
-    [SerializeField] private float CarSpeed = 3f;
+    [SerializeField] private float CarSpeed = 20f;
     public Transform WaypointParent;
 
     private Transform[] waypoints;
@@ -34,5 +34,22 @@ public class Cars : MonoBehaviour
         Transform target = waypoints[currentWaypointIndex];
 
         transform.position = Vector2.MoveTowards(transform.position, target.position, CarSpeed * Time.deltaTime);
+
+        if (Vector2.Distance(transform.position, target.position) < 0.1f)
+        {
+            currentWaypointIndex++;
+
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                if (loopWaypoints)
+                {
+                    currentWaypointIndex = 0;
+                }
+                else
+                {
+                    currentWaypointIndex = waypoints.Length - 1;
+                }
+            }
+        }
     }
 }
