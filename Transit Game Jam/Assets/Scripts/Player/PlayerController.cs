@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [Header("Input")]
     public InputActions inputActions;
 
+    public float playerHealth = 3f;
+
     private Rigidbody2D playerRB;
 
     private Vector2 MoveInput;

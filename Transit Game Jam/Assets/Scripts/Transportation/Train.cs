@@ -53,7 +53,7 @@ public class Train : MonoBehaviour
 
             if (keyboard.spaceKey.wasPressedThisFrame)
             {
-                SceneManager.LoadScene("Train");
+                SceneManager.LoadScene("TrainInterior");
             }
         }
         else

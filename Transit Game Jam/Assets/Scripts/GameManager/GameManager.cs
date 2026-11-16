@@ -13,9 +13,6 @@ public class GameManager : MonoBehaviour
     private SceneManager sceneManager;
     [SerializeField] private float elapsedtime = 0f;
 
-    private int playerHealth = 3;
-
-
     public float cheddahAmt;
 
     private void Awake()
@@ -49,15 +46,10 @@ public class GameManager : MonoBehaviour
         cheddahTxt.text = "Cheddah: $" + cheddahAmt;
 
         elapsedtime += Time.deltaTime;
+    }
 
-        /*if(elapsedtime <= 0)
-        {
-            SceneManager.LoadScene(2);
-        }*/
+    void playerChange()
+    {
 
-        if(playerHealth <= 0)
-        {
-            SceneManager.LoadScene(2);
-        }
     }
 }
