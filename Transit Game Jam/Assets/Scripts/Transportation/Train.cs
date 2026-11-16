@@ -1,10 +1,6 @@
-using JetBrains.Annotations;
-using System.Collections;
-using TreeEditor;
-using Unity.VisualScripting;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class Train : MonoBehaviour

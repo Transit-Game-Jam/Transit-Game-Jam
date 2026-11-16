@@ -9748,9 +9748,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab7f5e319cba999498b8aa947e1be7f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bike
-  Bikespeed: 15
-  bikeRB: {fileID: 0}
-  MoveInput: {x: 0, y: 0}
 --- !u!212 &1707555517
 SpriteRenderer:
   serializedVersion: 2
