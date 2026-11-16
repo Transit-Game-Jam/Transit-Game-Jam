@@ -35,7 +35,24 @@ public class Cars : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(transform.position, target.position, CarSpeed * Time.deltaTime);
 
+
         if (Vector2.Distance(transform.position, target.position) < 0.1f)
+        {
+            currentWaypointIndex++;
+
+            if (currentWaypointIndex >= waypoints.Length)
+            {
+                if (loopWaypoints)
+                {
+                    currentWaypointIndex = 0;
+                }
+                else
+                {
+                    currentWaypointIndex = waypoints.Length - 1;
+                }
+            }
+        }
+        /*if (Vector2.Distance(transform.position, target.position) < 0.1f)
         {
             int nextWaypointIndex;
 
@@ -46,6 +63,6 @@ public class Cars : MonoBehaviour
             while (nextWaypointIndex == currentWaypointIndex);
 
             currentWaypointIndex = nextWaypointIndex;
-        }
+        }*/
     }
 }
