@@ -85,6 +85,7 @@ public class PlayerController : MonoBehaviour
             playerMovement.enabled = true;
             // Disable bike controls
             currentBike.enabled = false;
+            DismountBike();
         }
     }
 
@@ -151,6 +152,17 @@ public class PlayerController : MonoBehaviour
         currentBike.enabled = true;
     }
 
+
+    void DismountBike()
+    {
+        isRiding = false;
+        // Detach player from bike
+        transform.SetParent(null);
+        // Enable walking controls
+        playerMovement.enabled = true;
+        // Disable bike controls
+        currentBike.enabled = false;
+    }
 
 
     IEnumerator PlayerSlowed()
