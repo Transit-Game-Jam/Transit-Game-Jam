@@ -16046,6 +16046,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11335835408280670, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Text
+      value: Get to the Wedding
+      objectReference: {fileID: 0}
+    - target: {fileID: 344881781749899861, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Name
+      value: Wedding
+      objectReference: {fileID: 0}
     - target: {fileID: 2350078787482550753, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -16126,6 +16134,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2684287803731019772, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Text
+      value: Get Pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 3081037861831706175, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Text
+      value: Pick Up Tux
+      objectReference: {fileID: 0}
     - target: {fileID: 3486382793905747363, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_Name
       value: PlayerUI
@@ -16138,6 +16154,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -19.889
       objectReference: {fileID: 0}
+    - target: {fileID: 6955248256071842703, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Name
+      value: Haircut
+      objectReference: {fileID: 0}
     - target: {fileID: 6968488433076472407, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 112.2
@@ -16145,6 +16165,10 @@ PrefabInstance:
     - target: {fileID: 6968488433076472407, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 94.223
+      objectReference: {fileID: 0}
+    - target: {fileID: 7290169586534625593, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Name
+      value: gouda
       objectReference: {fileID: 0}
     - target: {fileID: 7449274766301024115, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_SizeDelta.x
@@ -16161,6 +16185,22 @@ PrefabInstance:
     - target: {fileID: 7449274766301024115, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.0011394
+      objectReference: {fileID: 0}
+    - target: {fileID: 8040271784870401047, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Text
+      value: Get a Haircut
+      objectReference: {fileID: 0}
+    - target: {fileID: 8351868614783718529, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Name
+      value: Pizza
+      objectReference: {fileID: 0}
+    - target: {fileID: 8557767516766659454, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Name
+      value: tux
+      objectReference: {fileID: 0}
+    - target: {fileID: 8572225736756235824, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
+      propertyPath: m_Text
+      value: "Get a \u201CGouda\u201D Gift"
       objectReference: {fileID: 0}
     - target: {fileID: 8644376714525795012, guid: 5cb3d39742659aa479f33369b5e5c770, type: 3}
       propertyPath: m_UiScaleMode
